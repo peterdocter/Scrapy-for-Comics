@@ -17,7 +17,7 @@ class Comics(scrapy.Spider):
     # 找出所有的漫画url
     def parse(self, response):
 
-        # 请求返回的html源码
+        # 请求返回的response对象
         content = Selector(response=response)
         if not content:
             print('parse body error.')
@@ -113,9 +113,6 @@ class Comics(scrapy.Spider):
             return
 
         try:
-            user_agent = 'Mozilla/4.0 (compatible; MSIE 5.5; Windows NT)'
-            headers = { 'User-Agent' : user_agent }
-
             response = requests.get(img_url,timeout=30)
 
             # 请求返回到的数据
@@ -129,7 +126,6 @@ class Comics(scrapy.Spider):
 
             print('save image finished:' + pic_name)
 
-            # urllib.request.urlretrieve(img_url, pic_name)
         except Exception as e:
             print('save image error.')
             print(e)
