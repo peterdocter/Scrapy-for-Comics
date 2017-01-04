@@ -45,7 +45,7 @@ class Comics(scrapy.Spider):
 		url_num = content.xpath("//div[@class='mainleft']/div[@class='pages']/ul/li")
 		next_url = content.xpath("//div[@class='mainleft']/div[@class='pages']/ul/li[{}]/a/@href".format(len(url_num)-3)).extract()
 
-		print '总页数: {},下一页: {}'.format(url_num,next_url)
+		# print '总页数: {},下一页: {}'.format(url_num,next_url)
 
 		if next_url:
 			next_page = 'http://www.xeall.com/shenshi/' + next_url[0]
